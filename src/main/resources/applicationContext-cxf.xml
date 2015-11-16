@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="  
+        	http://www.springframework.org/schema/beans   
+        	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+        	http://cxf.apache.org/jaxws  
+        	http://cxf.apache.org/schemas/jaxws.xsd
+        	http://cxf.apache.org/core
+        	http://cxf.apache.org/schemas/core.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<bean id="QPXService" class="com.ceair.ita.ws.QPX" />
+
+	<jaxws:server id="QPX" address="/QPX"
+		serviceClass="com.ceair.ita.ws.IQPX">
+		<jaxws:serviceBean>
+			<ref bean="QPXService" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+	
+</beans>
